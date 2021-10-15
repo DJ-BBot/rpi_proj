@@ -8,22 +8,28 @@ fn main() {
     let red = LED::new(22); // set a variable for the led on pin 18
     let mut count = 0;
     loop { // start an infinite loop
-        green.on();
-        sleep(Duration::from_secs(3)); // pause one second
-        green.off();
-        yellow.on();
-        sleep(Duration::from_secs(2));
-        yellow.off();
-        red.on();
-        sleep(Duration::from_secs(3));
-        red.off();
+        light_cycle(&green, Duration::from_secs(3));
+        light_cycle(&yellow, Duration::from_secs(2));
+        light_cycle(&red, Duration::from_secs(3));
         if count == 15 {
-            green.off();
-            yellow.off();
-            red.off();
+            turn_off_lights(&green);
+            turn_off_lights(&yellow);
+            turn_off_lights(&red);
             break;
         }
 
         count = count + 1;
+    }
+}
+
+fn light_cycle(lt: &rust_gpiozero::LED, secs: Duration) {
+    lt.on();
+    sleep(secs);
+    lt.off();
+}
+
+fn turn_off_lights(lt: &rust_gpiozero::LED) {
+    if lt.is_lit() {
+        lt.off();
     }
 }
