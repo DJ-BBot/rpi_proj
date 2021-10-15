@@ -4,9 +4,10 @@ use std::time::Duration;
 
 fn main() {
     let green = LED::new(18); // set the LED on pin 18 as "green" for the stop light
-    let yellow = LED::new(13);
-    let red = LED::new(22); // set a variable for the led on pin 18
+    let yellow = LED::new(13); // set the LED on pin 13 yellow for the stop light
+    let red = LED::new(22); // set the LED on pin 22 red for the stop light
     let mut count = 0;
+
     loop { // start an infinite loop
         light_cycle(&green, Duration::from_secs(3));
         light_cycle(&yellow, Duration::from_secs(2));
