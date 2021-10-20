@@ -25,7 +25,7 @@ impl RbLED {
             true => String::from("Active"),
             false => String::from("Inactive"),
         };
-        println!("LED:\n\t  Status:\t{}\n\tColor:\t  {}\n\tGPIO Pin: {}\n", 
+        println!("LED:\n\tStatus:\t  {}\n\tColor:\t  {}\n\tGPIO Pin: {}\n", 
             status, self.color, self.pin);
     }
 
